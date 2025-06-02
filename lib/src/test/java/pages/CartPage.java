@@ -78,6 +78,7 @@ public class CartPage {
 	}
 	
 	public void removeAllItems() {
+		waitForCartItems(5);
 		List<WebElement> items = driver.findElements(cartItems);
 		for (WebElement item : items) {
 			WebElement removeButton = item.findElement(By.xpath(".//button[text()='Remove']"));

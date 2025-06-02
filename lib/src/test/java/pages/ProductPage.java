@@ -20,10 +20,20 @@ public class ProductPage {
 	private By addToCartBtn4 = By.id("add-to-cart-sauce-labs-fleece-jacket");
 	private By addToCartBtn5 = By.id("add-to-cart-sauce-labs-onesie");
 	private By addToCartBtn6 = By.id("add-to-cart-test.allthethings()-t-shirt-(red)");
+	
+	private By removeBtn1 = By.id("remove-sauce-labs-backpack");
+	private By removeBtn2 = By.id("remove-sauce-labs-bike-light");
+	private By removeBtn3 = By.id("remove-sauce-labs-bolt-t-shirt");
+	private By removeBtn4 = By.id("remove-sauce-labs-fleece-jacket");
+	private By removeBtn5 = By.id("remove-sauce-labs-onesie");
+	private By removeBtn6 = By.id("remove-test.allthethings()-t-shirt-(red)");
+	
 	private By productSortContainer = By.className("product_sort_container");
+	private By cartIcon = By.className("shopping_cart_link");
+	
 	private By menuButton = By.id("react-burger-menu-btn");
 	private By logoutButton = By.id("logout_sidebar_link");
-	private By cartIcon = By.className("shopping_cart_link");
+	private By resetButton = By.id("reset_sidebar_link");
 
 	private By inventoryItems = By.className("inventory_item");
 	private By productName = By.className("inventory_item_name");
@@ -34,27 +44,63 @@ public class ProductPage {
 	}
 
 	public void addBackpackToCart() {
+		waitForButtonToBeClickable(addToCartBtn1, 5);
 		driver.findElement(addToCartBtn1).click();
 	}
 
 	public void addBikeLightToCart() {
+		waitForButtonToBeClickable(addToCartBtn2, 5);
 		driver.findElement(addToCartBtn2).click();
 	}
 
 	public void addBoltTShirtToCart() {
+		waitForButtonToBeClickable(addToCartBtn3, 5);
 		driver.findElement(addToCartBtn3).click();
 	}
 
 	public void addFleeceJacketToCart() {
+		waitForButtonToBeClickable(addToCartBtn4, 5);
 		driver.findElement(addToCartBtn4).click();
 	}
 
 	public void addOnesieToCart() {
+		waitForButtonToBeClickable(addToCartBtn5, 5);
 		driver.findElement(addToCartBtn5).click();
 	}
 
 	public void addRedTShirtToCart() {
+		waitForButtonToBeClickable(addToCartBtn6, 5);
 		driver.findElement(addToCartBtn6).click();
+	}
+	
+	public void removeBackpackFromCart() {
+		waitForButtonToBeClickable(removeBtn1, 5);
+		driver.findElement(removeBtn1).click();
+	}
+
+	public void removeBikeLightFromCart() {
+		waitForButtonToBeClickable(removeBtn2, 5);
+		driver.findElement(removeBtn2).click();
+	}
+
+	public void removeBoltTShirtFromCart() {
+		waitForButtonToBeClickable(removeBtn3, 5);
+		driver.findElement(removeBtn3).click();
+	}
+
+	public void removeFleeceJacketFromCart() {
+		waitForButtonToBeClickable(removeBtn4, 5);
+		driver.findElement(removeBtn4).click();
+	}
+
+	public void removeOnesieFromCart() {
+		waitForButtonToBeClickable(removeBtn5, 5);
+		driver.findElement(removeBtn5).click();
+	}
+
+	public void removeRedTShirtFromCart() {
+		waitForButtonToBeClickable(removeBtn6, 5);
+		driver.findElement(removeBtn6).click();
 	}
 
 	public void selectProductSort(String sortOption) {
@@ -114,6 +160,18 @@ public class ProductPage {
 	public void waitForInventoryItems(int seconds) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.presenceOfElementLocated(inventoryItems));
+	}
+	
+	public void waitForButtonToBeClickable(By locator, int seconds) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+	
+	public void resetApp() {
+		openMenu();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.elementToBeClickable(resetButton));
+		driver.findElement(resetButton).click();
 	}
 
 	public static class InventoryItem {
