@@ -23,11 +23,15 @@ It serves as part of my portfolio to demonstrate automation testing skills.
 | TC-019 | Checkout process accepts special characters in customer name fields |
 
 ## 📁 Project Structure
+```
 src/
 ├── base/  # Base test class with common setup/teardown methods
 ├── pages/ # Page Object classes for UI abstraction
 ├── tests/ # JUnit test classes for test scenarios
 └── utils/ # WebDriver setup and config utilities
+testcases/
+└── SDTestcase.xlsx # List of test cases
+```
 
 ## 🛠️ Technologies Used
 
@@ -64,7 +68,7 @@ All test cases are available in the [`/testcases`](./testcases) folder as an `.x
 
 **Nguyen Quang Chinh**  
 Email: nqc3822@gmail.com  
-LinkedIn: [*(nqc3802)*](https://www.linkedin.com/in/nqc3802/)
+LinkedIn: [*nqc3802*](https://www.linkedin.com/in/nqc3802/)
 
 ---
 
