@@ -24,11 +24,11 @@ It serves as part of my portfolio to demonstrate automation testing skills.
 
 ## 📁 Project Structure
 ```
-src/
-├── base/  # Base test class with common setup/teardown methods
+src/test/java/
+├── base/ # Base test class with common setup/teardown logic
 ├── pages/ # Page Object classes for UI abstraction
 ├── tests/ # JUnit test classes for test scenarios
-└── utils/ # WebDriver setup and config utilities
+└── utils/ # WebDriver setup and helper utilities
 testcases/
 └── SDTestcase.xlsx # List of test cases
 ```
