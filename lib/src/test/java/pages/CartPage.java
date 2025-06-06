@@ -87,6 +87,18 @@ public class CartPage {
 			}
 		}
 	}
+	
+	public void clickOnProduct(String productName) {
+		waitForCartItems(5);
+		List<WebElement> items = driver.findElements(cartItems);
+		for (WebElement item : items) {
+			if (item.findElement(itemName).getText().equalsIgnoreCase(productName)) {
+				item.findElement(itemName).click();
+				return;
+			}
+		}
+		throw new RuntimeException("Product with name '" + productName + "' not found in the cart.");
+	}
 
 	public static class CartItem {
 		private String name;

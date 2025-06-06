@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import base.BaseTest;
 import pages.CartPage;
+import pages.ProductDetailPage;
 import pages.ProductPage;
 
 public class CartTest extends BaseTest {
@@ -84,6 +85,39 @@ public class CartTest extends BaseTest {
 		Assertions.assertFalse(cartItemsAfterRemove.contains("Sauce Labs Bike Light"),
 				"Sauce Labs Backpack was not removed from the cart");
 		Assertions.assertEquals(1, cartItemsAfterRemove.size(), "Number of items in cart after remove is not correct");
+		cartPage.removeAllItems();
+	}
+	
+	@Test
+	@DisplayName("Test xoá khỏi giỏ tại trang chi tiết sản phẩm")
+	public void removeFromProductDetailPageTest() {
+		performLogin();
+		ProductPage productPage = new ProductPage(driver);
+		CartPage cartPage = new CartPage(driver);
+		ProductDetailPage productDetailPage = new ProductDetailPage(driver);
+
+		productPage.addBackpackToCart();
+		productPage.addBikeLightToCart();
+		productPage.openCart();
+
+		List<String> cartItemsBeforeRemove = cartPage.getCartItemNames();
+		Assertions.assertTrue(cartItemsBeforeRemove.contains("Sauce Labs Backpack"),
+				"There is no Sauce Labs Backpack in the cart");
+		Assertions.assertTrue(cartItemsBeforeRemove.contains("Sauce Labs Bike Light"),
+				"There is no Sauce Labs Bike Light in the cart");
+		Assertions.assertEquals(2, cartItemsBeforeRemove.size(),
+				"Number of items in cart before remove is not correct");
+
+		cartPage.clickOnProduct("Sauce Labs Bike Light");
+		productDetailPage.removeFromCart();
+
+		productDetailPage.openCart();
+
+		List<String> cartItemsAfterRemove = cartPage.getCartItemNames();
+		Assertions.assertTrue(cartItemsAfterRemove.contains("Sauce Labs Backpack"),
+				"Sauce Labs Bike Light was not removed from the cart");
+		Assertions.assertEquals(1, cartItemsAfterRemove.size(), "Number of items in cart after remove is not correct");
+
 		cartPage.removeAllItems();
 	}
 }
